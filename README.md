@@ -11,6 +11,12 @@ This tool uses [Chlumsky/msdfgen](https://github.com/Chlumsky/msdfgen) to genera
 
 ![Preview image](https://raw.githubusercontent.com/soimy/msdf-bmfont-xml/master/assets/msdf-bmfont-xml.png)
 
+## Run script to see MSDF font in browser using pixi.js
+
+```bash
+npm install & npm run render
+```
+
 ## Install as CLI
 
 ```bash

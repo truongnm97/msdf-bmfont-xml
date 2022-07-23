@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.0](https://github.com/soimy/msdf-bmfont-xml/compare/v2.6.0...v2.7.0) (2022-07-23)
+
+
+### Features
+
+* add new output type: txt ([34d8976](https://github.com/soimy/msdf-bmfont-xml/commit/34d8976a8672045534c8c379c967cf16bcbb8cbe))
+
 ## [2.6.0](https://github.com/soimy/msdf-bmfont-xml/compare/v2.5.4...v2.6.0) (2022-01-31)
 
 

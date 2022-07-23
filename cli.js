@@ -17,7 +17,7 @@ args
   .usage('[options] <font-file>')
   .arguments('<font_file>')
   .description('Creates a BMFont compatible bitmap font of signed distance fields from a font file')
-  .option('-f, --output-type <format>', 'font file format: xml(default) | json', /^(xml|json)$/i, 'xml')
+  .option('-f, --output-type <format>', 'font file format: xml(default) | json | txt', /^(xml|json|txt)$/i, 'xml')
   .option('-o, --filename <atlas_path>', 'filename of font textures (defaut: font-face) font filename always set to font-face name')
   .option('-s, --font-size <fontSize>', 'font size for generated textures', 42)
   .option('-i, --charset-file <charset>', 'user-specified charactors from text-file', fileExistValidate)

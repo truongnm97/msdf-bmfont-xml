@@ -28,7 +28,7 @@ module.exports = generateBMFont;
  *
  * @param {string|Buffer} fontPath - Path or Buffer for the input ttf/otf/woff font
  * @param {Object} opt - Options object for generating bitmap font (Optional) :
- *            outputType : font file format Avaliable: xml(default), json
+ *            outputType : font file format Avaliable: xml(default), json, txt
  *            filename : filename of both font file and font textures
  *            fontSize : font size for generated textures (default 42)
  *            charset : charset in generated font, could be array or string (default is Western)
@@ -255,7 +255,8 @@ function generateBMFont (fontPath, opt, callback) {
         smooth: 1,
         aa: 1,
         padding: fontPadding,
-        spacing: fontSpacing
+        spacing: fontSpacing,
+        outline: 0
       },
       common: {
         lineHeight: (os2.sTypoAscender - os2.sTypoDescender + os2.sTypoLineGap) * (fontSize / font.unitsPerEm),

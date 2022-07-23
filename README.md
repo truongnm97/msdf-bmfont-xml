@@ -4,11 +4,10 @@
 [![npm version](https://badge.fury.io/js/msdf-bmfont-xml.svg)](https://badge.fury.io/js/msdf-bmfont-xml)
 ![npm](https://img.shields.io/npm/dm/msdf-bmfont-xml.svg)
 
-Converts a `.ttf` font file into multichannel signed distance fields, then outputs packed spritesheets and a xml(.fnt} or json representation of an AngelCode BMfont.
+Converts a `.ttf` font file into multichannel signed distance fields, then outputs packed spritesheets and an `xml(.fnt}` / `txt(.fnt)` or `json` representation of an AngelCode BMFont file.
 
 Signed distance fields are a method of reproducing vector shapes from a texture representation, popularized in [this paper by Valve](http://www.valvesoftware.com/publications/2007/SIGGRAPH2007_AlphaTestedMagnification.pdf).
-This tool uses [Chlumsky/msdfgen](https://github.com/Chlumsky/msdfgen) to generate multichannel signed distance fields to preserve corners. The distance fields are created from vector fonts, then rendered into texture pages. A BMFont object is provided for character layout.
-
+This tool uses [Chlumsky/msdfgen](https://github.com/Chlumsky/msdfgen) to generate multichannel signed distance fields to preserve corners. The distance fields are created from vector fonts, then rendered into texture pages. A BMFont object is provided for character layout. (See: [BMFont format](http://www.angelcode.com/products/bmfont/doc/file_format.html))
 ![Preview image](https://raw.githubusercontent.com/soimy/msdf-bmfont-xml/master/assets/msdf-bmfont-xml.png)
 
 ## Run script to see MSDF font in browser using pixi.js
@@ -37,7 +36,7 @@ Creates a BMFont compatible bitmap font of signed distance fields from a font fi
 
 Options:
   -V, --version                 output the version number
-  -f, --output-type <format>    font file format: xml(default) | json (default: "xml")
+  -f, --output-type <format>    font file format: xml(default) | json | txt (default: "xml")
   -o, --filename <atlas_path>   filename of font textures (defaut: font-face)
                                 font filename always set to font-face name
   -s, --font-size <fontSize>    font size for generated textures (default: 42)

@@ -1,5 +1,5 @@
 const utils = require('./lib/utils');
-const reshaper = require('arabic-persian-reshaper').ArabicShaper;
+const reshaper = require('./ArabicShaper');
 const opentype = require('opentype.js');
 const exec = require('child_process').exec;
 const mapLimit = require('map-limit');
@@ -299,7 +299,10 @@ function generateBMFont (fontPath, opt, callback) {
 
 function generateImage (opt, callback) {
   const {binaryPath, font, char, fontSize, fieldType, distanceRange, roundDecimal, debug, tolerance} = opt;
-  const glyph = font.charToGlyph(char);
+  let glyph = font.charToGlyph(char);
+  if (glyph.unicode == null) {
+    glyph = font.charToGlyph(reshaper.fallbackGlyphs.get(char));
+  }
   const commands = glyph.getPath(0, 0, fontSize).commands;
   let contours = [];
   let currentContour = [];

@@ -16,7 +16,7 @@ const defaultCharset = " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUV
 const controlChars = ['\n', '\r', '\t'];
 
 const binaryLookup = {
-  darwin: 'msdfgen.osx',
+  darwin: 'msdfgen',
   darwin_arm64: 'msdfgen.osx',
   win32: 'msdfgen.exe',
   linux: 'msdfgen.linux',
@@ -105,7 +105,7 @@ function generateBMFont (fontPath, opt, callback) {
   let charset = opt.charset = (typeof opt.charset === 'string' ? Array.from(opt.charset) : opt.charset) || reuse.charset || defaultCharset;
 
   // TODO: Validate options
-  if (fieldType !== 'msdf' && fieldType !== 'sdf' && fieldType !== 'psdf') {
+  if (fieldType !== 'msdf' && fieldType !== 'sdf' && fieldType !== 'psdf' && fieldType !== 'mtsdf') {
     throw new TypeError('fieldType must be one of msdf, sdf, or psdf');
   }
 
@@ -302,6 +302,9 @@ function generateImage (opt, callback) {
   let glyph = font.charToGlyph(char);
   if (glyph.unicode == null) {
     glyph = font.charToGlyph(reshaper.fallbackGlyphs.get(char));
+    if (glyph.unicode == null) {
+      console.log(`${char} (char code: ${char.charCodeAt().toString(16)}) glyph is not found`)
+    }
   }
   const commands = glyph.getPath(0, 0, fontSize).commands;
   let contours = [];
@@ -357,6 +360,10 @@ function generateImage (opt, callback) {
     if (fieldType === 'msdf') {
       for (let i = 0; i < rawImageData.length; i += channelCount) {
         pixels.push(...rawImageData.slice(i, i + channelCount), 255); // add 255 as alpha every 3 elements
+      }
+    } else if (fieldType === 'mtsdf') {
+      for (let i = 0; i < rawImageData.length; i += channelCount) {
+        pixels.push(...rawImageData.slice(i, i + channelCount)); // make 4 channels color
       }
     } else {
       for (let i = 0; i < rawImageData.length; i += channelCount) {
